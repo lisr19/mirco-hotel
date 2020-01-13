@@ -1,0 +1,304 @@
+
+.msg {
+  padding-top: 15px;
+  width: 100%;
+  background: rgba(248, 249, 251, 1);
+
+  .msg-title {
+    width: inherit;
+    padding: 32px 40px;
+    font-size: 48px;
+    font-weight: 600;
+    color: rgba(72, 72, 72, 1);
+    line-height: 66px;
+    text-align: left;
+  }
+
+  .msg-list {
+    text-align: left;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    ul li {
+      list-style: none;
+      width: 100%;
+      height: 156px;
+      padding: 40px 0 0 40px;
+      > div {
+        display: flex;
+        justify-content: space-between;
+        img {
+          width: 92px;
+          height: 92px;
+          border-radius: 50%;
+        }
+        > div {
+          width: calc(100% - 120px);
+          padding: 0 40px 24px 0;
+          border-bottom: 2px solid #E9E9E9;
+          .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            span:nth-child(1) {
+              font-size: 28px;
+              font-weight: 400;
+              color: rgba(51, 51, 51, 1);
+              line-height: 40px;
+            }
+            span:nth-child(2) {
+              font-size: 22px;
+              font-weight: 400;
+              color: rgba(153, 153, 153, 1);
+              line-height: 32px;
+            }
+          }
+          .content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            > span {
+              font-size: 24px;
+              font-weight: 400;
+              color: rgba(102, 102, 102, 1);
+              line-height: 34px;
+            }
+            > div {
+              width: 36px;
+              height: 36px;
+              background: rgba(255, 90, 96, 1);
+              border-radius: 50%;
+              text-align: center;
+              font-size: 22px;
+              font-weight: 400;
+              color: rgba(255, 255, 255, 1);
+              line-height: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .msg-null{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    >img{
+      width: 100%;
+      margin-top: 40%
+    }
+  }
+}
+
+.msg-header {
+  width: 100%;
+  padding: 34px 40px 28px 40px;
+  background: rgba(247, 247, 247, 1);
+  position: relative;
+  text-align: center;
+  #back {
+    width: 20px;
+    height: 35px;
+    position: absolute;
+    left: 40px;
+  }
+  span {
+    font-size: 28px;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 40px;
+  }
+  #more {
+    width: 43px;
+    height: 10px;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    margin-top: -5px;
+  }
+}
+
+.msg-body {
+  padding: 4px 24px;
+  background: rgba(224, 226, 228, 1);
+  width: 100%;
+  .msg-card {
+    width: 702px;
+    height: 380px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    padding: 40px 26px 28px 16px;
+    position: relative;
+    text-align: left;
+    margin: 15px auto;
+    .card-title {
+      font-size: 32px;
+      font-weight: 500;
+      color: rgba(51, 51, 51, 1);
+      line-height: 44px;
+      padding-bottom: 12px;
+    }
+    .card-item {
+      font-size: 28px;
+      font-weight: 500;
+      color: rgba(51, 51, 51, 1);
+      line-height: 40px;
+      margin-top: 12px;
+      .time {
+        font-size: 28px;
+        font-weight: 500;
+        color: #6991FE;
+        line-height: 40px;
+      }
+      .tip {
+        font-size: 24px;
+        font-weight: 500;
+        color: #666666;
+        line-height: 40px;
+      }
+      .content {
+        font-size: 24px;
+        font-weight: 500;
+        color: rgba(51, 51, 51, 1);
+        line-height: 40px;
+      }
+      .content2 {
+        font-size: 24px;
+        font-weight: 500;
+        color: #666666;
+        line-height: 40px;
+      }
+    }
+    .btn {
+      width: 150px;
+      height: 50px;
+      background: rgba(237, 237, 237, 1);
+      border-radius: 12px;
+      padding: 8px 0;
+      position: absolute;
+      bottom: 28px;
+      right: 26px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(51, 51, 51, 1);
+      line-height: 34px;
+    }
+  }
+  .msg-card2 {
+    width: 702px;
+    height: 380px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    padding: 40px 26px 28px 16px;
+    position: relative;
+    text-align: left;
+    margin: 15px auto;
+    .card-title {
+      font-size: 32px;
+      font-weight: 500;
+      color: #999999;
+      line-height: 44px;
+      padding-bottom: 12px;
+    }
+    .card-item {
+      font-size: 28px;
+      font-weight: 500;
+      color: #999999;
+      line-height: 40px;
+      margin-top: 12px;
+      .time {
+        font-size: 28px;
+        font-weight: 500;
+        color: #999999;
+        line-height: 40px;
+      }
+      .tip {
+        font-size: 24px;
+        font-weight: 500;
+        color: #999999;
+        line-height: 40px;
+      }
+      .content {
+        font-size: 24px;
+        font-weight: 500;
+        color: #999999;
+        line-height: 40px;
+      }
+      .content2 {
+        font-size: 24px;
+        font-weight: 500;
+        color: #999999;
+        line-height: 40px;
+      }
+    }
+    .btn {
+      width: 150px;
+      height: 50px;
+      background: rgba(237, 237, 237, 1);
+      border-radius: 12px;
+      padding: 8px 0;
+      position: absolute;
+      bottom: 28px;
+      right: 26px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      color: #999999;
+      line-height: 34px;
+    }
+  }
+
+  .info {
+    width: 100%;
+    height: 112px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.04);
+    padding: 12px 40px 16px 40px;
+    text-align: left;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    img{
+      width:84px;
+      height:84px;
+    }
+    .content{
+      margin-left: 22px;
+      span{
+        display: block;
+      }
+      .font1{
+        font-size:24px;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        line-height:34px;
+      }
+      .font2 {
+        font-size:24px;
+        font-weight:400;
+        color:rgba(102,102,102,1);
+        line-height:34px;
+        margin-top: 16px;
+      }
+    }
+    .btn{
+      width:148px;
+      height:58px;
+      padding: 12px 0;
+      background:rgba(254,254,254,1);
+      border-radius:35px;
+      border:2px solid rgba(98,140,253,1);
+      position: absolute;
+      right: 40px;
+      bottom: 28px;
+      text-align: center;
+      font-size:24px;
+      font-weight:400;
+      color:rgba(98,140,253,1);
+      line-height:34px;
+    }
+  }
+}
