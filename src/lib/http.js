@@ -2,8 +2,8 @@ import axios from 'axios';
 // import Vue from 'vue';
 
 axios.defaults.timeout = 30000;
-// axios.defaults.baseURL = 'http://120.78.215.17:9091/'; //外网baseurl
-axios.defaults.baseURL = 'http://192.168.0.122:9091/'; //122服务器baseurl
+axios.defaults.baseURL = 'http://120.24.0.130:9091/'; //外网baseurl
+// axios.defaults.baseURL = 'http://192.168.0.122:9091/'; //122服务器baseurl
 
 // http request 拦截器
 axios.interceptors.request.use(

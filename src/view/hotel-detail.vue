@@ -27,6 +27,7 @@
       </swiper>
       <div class="swiper-pagination" ></div>
     </div>
+    <h1 @click="plusReady">打开</h1>
     <div class="infor">
       <div class="norms">{{hotelData.name}}</div>
       <div style="display: flex">
@@ -209,6 +210,13 @@
       window.removeEventListener('scroll', this.handleScroll)
     },
     methods: {
+      plusReady(){
+        console.log(666666);
+        // 在这里调用plus api
+        // var w = plus.webview.create('https://test.seeklane.com/seeklane/dlrc/sf3/index.html','室内导航');
+        // plus.webview.show(w); // 显示窗口
+        plus.webview.open('https://test.seeklane.com/seeklane/dlrc/sf3/index.html','室内导航')
+      },
       openAMap(){
         let mapURL = this.mapURL.split('#')[1]
          this.$router.push({path:mapURL})

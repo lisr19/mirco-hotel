@@ -5,15 +5,21 @@ document.addEventListener('plusready', function () {
     // plus.navigator.setStatusBarBackground('#F5F5F5');//设置顶部颜色
     // plus.navigator.setStatusBarStyle('background:#F5F5F5')
     plus.key.addEventListener('backbutton', function () {
-        webview.canBack(function (e) {
+      webview.canBack(function (e) {
             if (e.canBack) {
+              console.log('物理键返回');
+              if(plus.webview.getTopWebview().getURL().includes('https://test.seeklane.com/seeklane')){
+                plus.webview.close('室内导航');
+              }else {
                 webview.back();
+              }
             } else {
-                //首页返回键处理
+              console.log('首页退出');
+              //首页返回键处理
                 //处理逻辑：1秒内，连续两次按返回键，则退出应用；
                 var first = null;
                 plus.key.addEventListener('backbutton', function () {
-                    //首次按键，提示‘再按一次退出应用’
+                  //首次按键，提示‘再按一次退出应用’
                     if (!first) {
                         first = new Date().getTime();
                         // alert('再按一次退出应用');//返回提示
@@ -28,6 +34,5 @@ document.addEventListener('plusready', function () {
                 }, false);
             }
         })
-    });
-   
+    })
 });

@@ -1,7 +1,14 @@
 <template>
   <div class="page">
+<!--    <p @click="plusReady">打开</p>-->
+<!--    <p @click="isBus=true">打开22</p>-->
+    <div v-if="isBus" class="bus-wrap">
+      <div class="close-btn" @click="backApp">返回</div>
+      <iframe class="bus-content" src="https://test.seeklane.com/seeklane/dlrc/sf3/index.html"
+              width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+    </div>
     <!--首页-->
-    <indexPage v-if="currentIndex===0"></indexPage>
+    <indexPage v-if="currentIndex===0&&!isBus"></indexPage>
     <!--消息-->
     <message v-else-if="currentIndex===1"></message>
     <!-- 订单 -->
@@ -49,6 +56,7 @@
     },
     data() {
       return {
+        isBus:false,
         docmHeight: document.documentElement.clientHeight,  //默认屏幕高度
         showHeight: document.documentElement.clientHeight,   //实时屏幕高度
         hideshow:true,  //显示或者隐藏footer
@@ -94,14 +102,12 @@
         ]
       }
     },
+
     created() {
       this.userID = localStorage.getItem('MicroHotelUserData')
-      console.log(this.$route.params.isLogin);
-      // if(this.userID){
-      //   this.userID=this.userID.split(',')[0];
-      // }else{
-      //   this.$router.push('/login-enroll');
-      // }
+      // document.addEventListener('plusready',function () {
+      //   plus.webview.open('http://m.weibo.cn/u/3196963860');
+      // },false)
     },
     activated(){
       this.init()
@@ -114,10 +120,16 @@
       }
     },
     methods: {
+
       init(){
         if(this.$route.params.isLogin){
           this.$router.go(0)
         }
+      },
+      plusReady(){
+        console.log(1111);
+        // 在这里调用plus api
+        plus.webview.open('https://test.seeklane.com/seeklane/dlrc/sf3/index.html',0)
       },
       tabNav(index){
         if(this.userID){
@@ -132,7 +144,11 @@
             console.log('取消');
           })
         }
-      }
+      },
+      backApp() {
+        // this.$router.back()
+        this.isBus = false
+      },
     }
   }
 </script>
@@ -209,6 +225,36 @@
     }
     .active{
       color:rgba(98,140,253,1);
+    }
+  }
+  .bus-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    z-index: 99;
+
+    .close-btn {
+      width: 100%;
+      height: 90px;
+      line-height: 90px;
+      background: rgba(245, 245, 245, 1);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+      text-align: left;
+      position: absolute;
+      top: 0;
+      padding-left: 40px;
+      font-size: 28px;
+      font-weight: 600;
+      z-index: 999;
+    }
+
+    .bus-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      bottom: 0;
+      padding-top: 90px;
     }
   }
 </style>
