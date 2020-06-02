@@ -15,6 +15,7 @@ document.addEventListener('plusready', function () {
               }
             } else {
               console.log('首页退出');
+              plus.webview.close('室内导航');
               //首页返回键处理
                 //处理逻辑：1秒内，连续两次按返回键，则退出应用；
                 var first = null;

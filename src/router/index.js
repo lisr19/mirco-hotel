@@ -219,7 +219,12 @@ export default new Router({
       path: '/home-list',
       name: '房东评价管理',
       component: (resolve) => require(['@/view/landlord/home-list'], resolve),
-    }
-
+    },
+    {
+      path: '/test',
+      name: '测试',
+      meta: { keepAlive: true },
+      component: (resolve) => require(['@/view/test.vue'], resolve),
+    },
   ]
 })

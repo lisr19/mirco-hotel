@@ -27,7 +27,8 @@
       </swiper>
       <div class="swiper-pagination" ></div>
     </div>
-    <h1 @click="plusReady">打开</h1>
+<!--    <h1 @click="plusReady">打开</h1>-->
+<!--    <h1 @click="titleNViewWebview">打开222</h1>-->
     <div class="infor">
       <div class="norms">{{hotelData.name}}</div>
       <div style="display: flex">
@@ -216,6 +217,20 @@
         // var w = plus.webview.create('https://test.seeklane.com/seeklane/dlrc/sf3/index.html','室内导航');
         // plus.webview.show(w); // 显示窗口
         plus.webview.open('https://test.seeklane.com/seeklane/dlrc/sf3/index.html','室内导航')
+      },
+      titleNViewWebview() {
+        var webview = null;
+        webview = plus.webview.create('https://test.seeklane.com/seeklane/dlrc/sf3/index.html', '室内导航',
+          {'titleNView':{style:'transparent',backgroundColor:'#FFFFFF','titleText':'室内导航','titleColor':'#000000',
+              autoBackButton:true, 'backButtonAutoControl':'close'
+              // buttons:[{text:'...',float:'right',onclick:this.clickButton()}]
+            }})
+        webview.addEventListener('close', function(){
+          webview=null;
+        });
+        webview.addEventListener('titleUpdate', function(){
+          webview.show();
+        });
       },
       openAMap(){
         let mapURL = this.mapURL.split('#')[1]

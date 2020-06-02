@@ -3,6 +3,7 @@ import axios from 'axios';
 
 axios.defaults.timeout = 30000;
 axios.defaults.baseURL = 'http://120.24.0.130:9091/'; //外网baseurl
+// axios.defaults.baseURL = 'http://127.0.0.1:8360/home/'; //本地
 // axios.defaults.baseURL = 'http://192.168.0.122:9091/'; //122服务器baseurl
 
 // http request 拦截器

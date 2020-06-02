@@ -1,12 +1,7 @@
 <template>
   <div class="page">
-<!--    <p @click="plusReady">打开</p>-->
-<!--    <p @click="isBus=true">打开22</p>-->
-    <div v-if="isBus" class="bus-wrap">
-      <div class="close-btn" @click="backApp">返回</div>
-      <iframe class="bus-content" src="https://test.seeklane.com/seeklane/dlrc/sf3/index.html"
-              width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
-    </div>
+<!--    <p @click="plusReady">打开室内导航</p>-->
+<!--    <p @click="titleNViewWebview">打开定位</p>-->
     <!--首页-->
     <indexPage v-if="currentIndex===0&&!isBus"></indexPage>
     <!--消息-->
@@ -130,6 +125,23 @@
         console.log(1111);
         // 在这里调用plus api
         plus.webview.open('https://test.seeklane.com/seeklane/dlrc/sf3/index.html',0)
+      },
+      clickButton(){
+        plus.nativeUI.alert('clicked!');
+      },
+      titleNViewWebview() {
+        var webview = null;
+        webview = plus.webview.create('https://test.seeklane.com/seeklane/dlrc/sf3/index.html', 'test',
+          {'titleNView':{style:'transparent',backgroundColor:'#FFFFFF','titleText':'室内定位','titleColor':'#000000',
+              autoBackButton:true, 'backButtonAutoControl':'close'
+        // buttons:[{text:'...',float:'right',onclick:this.clickButton()}]
+      }})
+        webview.addEventListener('close', function(){
+          webview=null;
+        });
+        webview.addEventListener('titleUpdate', function(){
+          webview.show();
+        });
       },
       tabNav(index){
         if(this.userID){
