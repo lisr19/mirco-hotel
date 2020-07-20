@@ -27,7 +27,9 @@
       </swiper>
       <div class="swiper-pagination" ></div>
     </div>
-<!--    <h1 @click="plusReady">打开</h1>-->
+<!--    <button @click="startBeaconDiscovery">开始搜索</button>-->
+<!--    <button @click="listenerBeacons">监听iBeacon设备更新</button>-->
+<!--    <h1 @click="plusReady">导航到房间</h1>-->
 <!--    <h1 @click="titleNViewWebview">打开222</h1>-->
     <div class="infor">
       <div class="norms">{{hotelData.name}}</div>
@@ -211,8 +213,39 @@
       window.removeEventListener('scroll', this.handleScroll)
     },
     methods: {
+      startBeaconDiscovery(){
+        plus.ibeacon.startBeaconDiscovery({
+          success:function(){
+            plus.nativeUI.alert('start success');
+          },
+          fail:function(e){
+            plus.nativeUI.alert('start error: '+JSON.stringify(e));
+          }
+        });
+      },
+      listenerBeacons(){
+        plus.ibeacon.startBeaconDiscovery({
+          success:function(){
+            plus.ibeacon.onBeaconUpdate(function(e){
+              var beacons = e.beacons;
+              var uuids = null;
+              for(var i in beacons){
+                if(uuids){
+                  uuids += ', '+beacons[i].uuid;
+                }else{
+                  uuids = beacons[i].uuid;
+                }
+              }
+              plus.nativeUI.alert('Beacons updated: '+uuids);
+            });
+          },
+          failed: function(e){
+            plus.nativeUI.alert('start error: '+JSON.stringify(e));
+          }
+        });
+      },
+
       plusReady(){
-        console.log(666666);
         // 在这里调用plus api
         // var w = plus.webview.create('https://test.seeklane.com/seeklane/dlrc/sf3/index.html','室内导航');
         // plus.webview.show(w); // 显示窗口

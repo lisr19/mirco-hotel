@@ -115,7 +115,6 @@
       }
     },
     methods: {
-
       init(){
         if(this.$route.params.isLogin){
           this.$router.go(0)
@@ -150,6 +149,7 @@
         }else{
           MessageBox.confirm('您还未登陆，现在去登陆?').then(action => {
             if(action==='confirm'){
+              localStorage.clear()
               this.$router.push({name:'登录注册'})
             }
           }).catch(() => {

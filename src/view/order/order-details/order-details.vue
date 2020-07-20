@@ -3,6 +3,9 @@
         <!-- 头部 -->
         <Header :title='pageName' ></Header>
         <div class="details-box">
+          <div class="btn-home" @click="openBluetoothAdapter">
+            室内导航
+          </div>
             <img class="hotel-logo" :src="order.imgLogo" alt="">
             <h1 class="hotel-name">{{order.name}}</h1>
             <h1 class="hotel-describe">【{{order.hotelName}}】 {{order.bedScale}}</h1>
@@ -224,6 +227,76 @@ export default {
       }
     },
     methods:{
+      //监听设备更新
+      listenerBeacons(){
+        let that= this
+        plus.ibeacon.startBeaconDiscovery({
+          success:function(){
+            plus.ibeacon.onBeaconUpdate(function(e){
+              var beacons = e.beacons;
+              var uuids = null;
+              for(var i in beacons){
+                if(uuids){
+                  uuids += ', '+beacons[i].uuid;
+                }else{
+                  uuids = beacons[i].uuid;
+                }
+              }
+              plus.nativeUI.alert('Beacons updated: '+uuids);
+            });
+          },
+          failed: function(e){
+            // that.startBeaconDiscovery()
+            plus.nativeUI.alert('start error: '+JSON.stringify(e));
+          }
+        });
+      },
+      //打开蓝牙
+      openBluetoothAdapter(){
+        plus.bluetooth.openBluetoothAdapter({
+          success:(e)=>{
+            this.titleNViewWebview()
+            // console.log('open success: '+JSON.stringify(e));
+          },
+          fail:(e)=>{
+            // console.log('open failed: '+JSON.stringify(e));
+            console.log('已打开蓝牙');
+            this.startBeaconDiscovery()
+          }
+        });
+      },
+      startBeaconDiscovery(){
+        let that= this
+        plus.ibeacon.startBeaconDiscovery({
+          success:function(){
+            // plus.nativeUI.alert('start success');
+            that.titleNViewWebview()
+          },
+          fail:function(e){
+            console.log('start error: '+JSON.stringify(e))
+            // that.titleNViewWebview()
+            // plus.nativeUI.alert('start error: '+JSON.stringify(e));
+            // that.titleNViewWebview()
+          }
+        });
+      },
+      plusReady(){
+        // plus.webview.show(w); // 显示窗口
+        plus.webview.open('https://location.seeklane.com/seeklane/mb/index.html?appCode=zdsyl','室内导航')
+      },
+      titleNViewWebview() {
+        var webview = null;
+        webview = plus.webview.create('https://location.seeklane.com/seeklane/mb/index.html?appCode=zdsyl', '室内导航',
+          {'titleNView':{style:'transparent',backgroundColor:'#FFFFFF','titleText':'室内定位','titleColor':'#000000',
+              autoBackButton:true, 'backButtonAutoControl':'close'
+            }})
+        webview.addEventListener('close', function(){
+          webview=null;
+        });
+        webview.addEventListener('titleUpdate', function(){
+          webview.show();
+        });
+      },
         // 去付款
         goPay(){
           let roomData = {
@@ -409,6 +482,18 @@ export default {
         min-height: 93%;
         margin-top: 90px;
         background:rgba(248,249,251,1);
+      position: relative;
+      .btn-home{
+        position: absolute;
+        right: 20px;
+       bottom: 20px;
+        width: 150px;
+        height: 60px;
+        line-height: 60px;
+        color: #ffffff;
+        background: #628CFD;
+        border-radius: 8px;
+      }
         // height: 100%;
         >.details-box{
             margin: 0 auto;

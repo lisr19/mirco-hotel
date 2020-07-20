@@ -1,6 +1,6 @@
 <template>
     <div class="oreder-body">
-        <hea title='房间订单详情'></hea>
+        <head title='房间订单详情'></head>
         <div class="details-body">
             <div class="room-box">
                 <h1>{{orderData.roomName}}</h1>
@@ -170,7 +170,7 @@ export default {
             display: block;
             width: 168px;
             height: 168px;
-            border-radius: 10px; 
+            border-radius: 10px;
             position: absolute;
             top: 126px;
             left: 40px;
@@ -178,7 +178,7 @@ export default {
         >ul{
             position: absolute;
             top: 122px;
-            left: 244px;  
+            left: 244px;
           >li{
                 max-width: 500px;
                 height:34px;
@@ -206,7 +206,7 @@ export default {
         >img{
             width: 168px;
             height: 168px;
-            border-radius: 10px; 
+            border-radius: 10px;
             display: block;
             position: absolute;
             top: 20px;

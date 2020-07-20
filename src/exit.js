@@ -8,7 +8,7 @@ document.addEventListener('plusready', function () {
       webview.canBack(function (e) {
             if (e.canBack) {
               console.log('物理键返回');
-              if(plus.webview.getTopWebview().getURL().includes('https://test.seeklane.com/seeklane')){
+              if(plus.webview.getTopWebview().getURL().includes('https://location.seeklane.com/seeklane/')){
                 plus.webview.close('室内导航');
               }else {
                 webview.back();
